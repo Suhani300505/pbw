@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>❤️ Love Messages for You</title>
+  <style>
+    body {
+      background-color: #fff0f5;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #d63384;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 40px;
+      margin-bottom: 30px;
+    }
+
+    .message-box {
+      font-size: 24px;
+      max-width: 600px;
+      width: 100%;
+      border: 2px dashed #d63384;
+      border-radius: 12px;
+      padding: 30px;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      min-height: 100px;
+    }
+
+    .typing {
+      border-right: 3px solid #d63384;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #d63384; }
+    }
+
+    /* ✅ Responsive styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 32px;
+      }
+
+      .message-box {
+        font-size: 20px;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 26px;
+      }
+
+      .message-box {
+        font-size: 18px;
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💖 Just for You</h1>
+  <div class="message-box">
+    <span id="typedMessage" class="typing"></span>
+  </div>
+
+  <script>
+    const messages = [
+      "You make my world brighter every day 🌟",
+      "My favorite place is inside your hug 💞",
+      "With you, every moment is magical ✨",
+      "I didn’t choose you, my heart did ❤️",
+      "Forever isn’t long enough with you 💘",
+      "You're not just a part of my life, you're my whole life 💖",
+      "You're the reason I smile for no reason 😊",
+      "Every heartbeat whispers your name 💓",
+      "I love you more than words can express 💌"
+    ];
+
+    const display = document.getElementById("typedMessage");
+
+    let currentMessage = 0;
+    let charIndex = 0;
+
+    function typeMessage() {
+      if (charIndex < messages[currentMessage].length) {
+        display.textContent += messages[currentMessage].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeMessage, 60);
+      } else {
+        setTimeout(() => {
+          display.textContent = "";
+          charIndex = 0;
+          currentMessage = (currentMessage + 1) % messages.length;
+          typeMessage();
+        }, 1500); 
+      }
+    }
+
+    typeMessage();
+  </script>
+
+</body>
+</html>
